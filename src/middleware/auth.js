@@ -4,7 +4,7 @@ require("dotenv").config();
 
 const redis = require("redis");
 const client = redis.createClient({
-  url: "redis://localhost:6379",
+  url: "redis://127.0.0.1:6379",
 });
 
 passport.use(
@@ -44,10 +44,6 @@ passport.use(
     }
   )
 );
-
-client.on("error", function (err) {
-  console.error("Error de Redis: " + err);
-});
 
 passport.serializeUser((user, done) => {
   done(null, user);
