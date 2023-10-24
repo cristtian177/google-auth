@@ -1,12 +1,13 @@
 const { Client } = require("pg");
 
 /*
+DATABASE_URL=postgresql://postgres:password@localhost:5432/users
 const connectionData = {
     user: "postgres",
-    host: "localhost",
-    database: "users",
     password: "password",
+    host: "localhost",
     port: 5432,
+    database: "users",
 };
 */
 

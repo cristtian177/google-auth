@@ -37,7 +37,7 @@ router.get("/proteced", isLoggedIn, async (req, res) => {
   // Genera un JWT con la información del usuario del auth
   const token = jwt.sign({ user }, process.env.JWT_SECRET);
 
-  res.status(200).json(token);
+  res.status(200).json({token});
 });
 
 router.get("/google/failure", isLoggedIn, (req, res) => {
