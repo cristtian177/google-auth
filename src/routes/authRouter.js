@@ -35,9 +35,9 @@ router.get("/google/callback", passport.authenticate("google", {
 router.get("/proteced", isLoggedIn, async (req, res) => {
   const user = req.user;
   // Genera un JWT con la información del usuario del auth
-  const token = jwt.sign({ user }, process.env.JWT_SECRET, { expiresIn: "1h" });
+  const token = jwt.sign({ user }, process.env.JWT_SECRET);
 
-  res.json(token);
+  res.status(200).json(token);
 });
 
 router.get("/google/failure", isLoggedIn, (req, res) => {

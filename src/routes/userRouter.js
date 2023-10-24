@@ -40,6 +40,12 @@ userRouter.post('/signup', async (req, res) => {
         // Si el correo electrónico no existe, crea el nuevo usuario.
         const newUser = await prisma.userBicyrent.create( { data:  req.body } );
 
+        const user = req.user;
+        // Genera un JWT con la información del usuario del auth
+        const token = jwt.sign({ user }, process.env.JWT_SECRET);
+      
+        res.status(200).json(token);
+
         res.status(200).json({ msg: 'Usuario creado', user: newUser });
     } catch (error) {
         console.error(error);
