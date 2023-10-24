@@ -32,7 +32,7 @@ router.get("/google/callback", passport.authenticate("google", {
   failureRedirect: "/auth/google/failure",
 }));
 
-router.get("/proteced", isLoggedIn, (req, res) => {
+router.get("/proteced", isLoggedIn, async (req, res) => {
   const user = req.user;
   // Genera un JWT con la información del usuario del auth
   const token = jwt.sign({ user }, process.env.JWT_SECRET, { expiresIn: "1h" });
@@ -48,6 +48,9 @@ router.get("/logout", isLoggedIn, (req, res) => {
   req.session.destroy();
   res.send('See you again');
 });
+
+//como hacer login?
+
 
 module.exports = router ;
 
